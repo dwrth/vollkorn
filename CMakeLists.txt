@@ -22,6 +22,8 @@ add_link_options(
   -Wl,--gc-sections # Remove unused sections
 )
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Our project declaration
 project(vollkorn VERSION 0.0.1)
 
