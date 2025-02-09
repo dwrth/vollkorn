@@ -1,0 +1,60 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "cmake --build build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": ["$gcc"],
+			"dependsOn": ["configure"]
+		},
+		{
+			"label": "configure",
+			"type": "shell",
+			"command": "cmake -B build -S .",
+			"problemMatcher": []
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "cmake --build build --target clean",
+			"problemMatcher": []
+		},
+		{
+			"label": "program",
+			"type": "shell",
+			"command": "cmake --build build --target program",
+			"problemMatcher": []
+		},
+		{
+			"label": "program-dfu",
+			"type": "shell",
+			"command": "cmake --build build --target program-dfu",
+			"problemMatcher": []
+		},
+		{
+			"label": "build_and_program",
+			"type": "shell",
+			"command": "cmake --build build && cmake --build build --target program",
+			"problemMatcher": ["$gcc"],
+			"dependsOn": ["configure"]
+		},
+		{
+			"label": "build_and_program_dfu",
+			"type": "shell",
+			"command": "cmake --build build && cmake --build build --target program-dfu",
+			"problemMatcher": ["$gcc"],
+			"dependsOn": ["configure"]
+		},
+		{
+			"label": "build_debug",
+			"type": "shell",
+			"command": "cmake -DCMAKE_BUILD_TYPE=Debug -B build -S . && cmake --build build",
+			"problemMatcher": ["$gcc"]
+		}
+	]
+}
